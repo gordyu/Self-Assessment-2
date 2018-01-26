@@ -1,0 +1,139 @@
+var salesTeam = [{name: {first: 'Aleen', last: 'Atkins'}, age: 26, sales: '$2314'},
+ 		{name: {first: 'Alvaro', last: 'Angelos'}, age: 55, sales: '$1668'},
+ 		{name: {first: 'Denese', last: 'Dossett'}, age: 29, sales: '$9248'},
+ 		{name: {first: 'Douglas', last: 'Denney'}, age: 53, sales: '$5058'},
+ 		{name: {first: 'Earline', last: 'Erickson'}, age: 19, sales: '$18876'},
+ 		{name: {first: 'Herman', last: 'Hazell'}, age: 25, sales: '$2746'},
+ 		{name: {first: 'Homer', last: 'Hirth'}, age: 26, sales: '$474'},
+ 		{name: {first: 'Hwa', last: 'Heidt'}, age: 53, sales: '$9607'},
+ 		{name: {first: 'Hyon', last: 'Hampshire'}, age: 46, sales: '$13598'},
+ 		{name: {first: 'Issac', last: 'Ingerson'}, age: 45, sales: '$5225'},
+ 		{name: {first: 'Jeraldine', last: 'Joplin'}, age: 39, sales: '$2891'},
+ 		{name: {first: 'Jin', last: 'Jeffrey'}, age: 17, sales: '$14402'},
+ 		{name: {first: 'Joleen', last: 'Jolin'}, age: 45, sales: '$15736'},
+ 		{name: {first: 'Jude', last: 'Jarrett'}, age: 53, sales: '$7557'},
+ 		{name: {first: 'Magda', last: 'Mireles'}, age: 18, sales: '$1498'},
+ 		{name: {first: 'Mistie', last: 'Montealegre'}, age: 31, sales: '$6920'},
+ 		{name: {first: 'Nancy', last: 'Napoli'}, age: 49, sales: '$5255'},
+ 		{name: {first: 'Regine', last: 'Rohrbaugh'}, age: 33, sales: '$7881'},
+ 		{name: {first: 'Rolando', last: 'Riebel'}, age: 35, sales: '$8573'},
+ 		{name: {first: 'Scarlett', last: 'Stagg'}, age: 36, sales: '$7126'},
+ 		{name: {first: 'Sherron', last: 'Strawn'}, age: 36, sales: '$8848'},
+ 		{name: {first: 'Susan', last: 'Shilling'}, age: 29, sales: '$8542'},
+ 		{name: {first: 'Tama', last: 'Tworek'}, age: 16, sales: '$9200'},
+ 		{name: {first: 'Tonisha', last: 'Taunton'}, age: 41, sales: '$5219'},
+ 		{name: {first: 'Vergie', last: 'Villescas'}, age: 25, sales: '$8712'}];
+
+// i: sales team Array
+// o: array of full names that are teenagers
+
+// create acc variable
+// iterate through the Array
+  // initialize variable for each person
+  // conditional, if the person.age >= 10 and < 20 
+  // push that person.name.first + ' ' + person.name.last to the teenager Array
+// return the teenager array
+ 		
+ function isTeenager(salesTeam) {
+  let teenagers = [];
+  for(var i = 0; i < salesTeam.length; i++) {
+    let person = salesTeam[i];
+    if(person.age > 10 && person.age < 20) {
+      teenagers.push(person.name.first + ' ' + person.name.last);
+    }
+  }
+  return teenagers;
+}
+
+// isTeenager(salesTeam);
+
+function assertObjectsEqual(actual, expected, testName) {
+  if (JSON.stringify(actual) === JSON.stringify(expected)) {
+    console.log('Test passed');
+  } else {
+    console.log('Test ['+testName+'] failed: expected ', expected, ' but got, ', actual );
+    }
+}
+
+// assertObjectsEqual(isTeenager(salesTeam), ["Earline Erickson", "Jin Jeffrey", "Magda Mireles", "Tama Tworek"], "Should return a list of all teenagers on the Sales Team");
+
+// i: array of objects
+// o: string with oldest person
+// e: non- array?
+
+// set variable to oldest person
+// iterate through the array
+  // intilaize variable for each person
+  // initilize max age to be age of the first perosn in the array
+  // conditonal to check age of each person against he max
+    // reset max if person is older
+    // set oldest person to be that person
+// outside he loop , return the stirng of this is the + oldestperson;
+  
+  
+function oldest (salesTeam) {
+  let oldestJerry;
+  let maxAge = 0;
+  for(var i = 0; i < salesTeam.length; i++) {
+    let person = salesTeam[i];
+    if(person.age > maxAge) {
+      maxAge = person.age;
+      oldestJerry = person.name.first + ' ' + person.name.last;
+    }
+  }
+  return 'The oldest student is ' + oldestJerry;
+}
+
+// oldest(salesTeam);
+
+// i: salesTeam array
+// o: array of each member with sales over 10k
+
+// create acc array
+// iterateh through the array
+  // initilize a variable for each person
+  // create a variable to set each sales property to an invocation of the helper function ( pass it the sales prop)
+  // create conditional to check if this sales variable is greater > 10k
+    // push each perso first & last to the accumulator
+// return the ten thousand arr
+
+function tenThousandClub (salesTeam) {
+  let daClub = [];
+  for(var x = 0; x < salesTeam.length; x++) {
+    let person = salesTeam[x];
+    let sales = salesToNumber(person.sales);
+    if(sales > 10000) {
+      daClub.push(person.name.first + ' ' + person.name.last);
+    }
+  }
+  return daClub;
+}
+
+// i: sales tring
+// o: number
+
+// acc var will just be 
+// convert teh string to an array, slice it, start with 1. and call map --> use parseInt or number to convert each var to anumber --> .join ('');
+
+function salesToNumber (salesString) {
+  let salesNum = salesString.split('')
+                            .slice(1)
+                            .map(function (element) {
+                              return parseInt(element);
+                            })
+                            .join('');
+  return salesNum;
+}
+
+// function assertObjectsEqual (test, expected, testName) {
+//   if(JSON.stringify(test) === JSON.stringify(expected)) {
+//     console.log(testName + ' PASSED!');
+//   } else {
+//     console.log('FAILED [' + testName + '] Expected ' + expected + ' but got ' + test);
+//   }
+// }
+
+assertObjectsEqual(tenThousandClub(salesTeam), [ 'Earline Erickson',
+  'Hyon Hampshire',
+  'Jin Jeffrey',
+  'Joleen Jolin' ], 'these are all of the ten thousand club members');
